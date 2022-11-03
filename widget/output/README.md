@@ -7,6 +7,8 @@ A Qtile widget to display output from scripts or shell commands.
 This widget is a plugin for Qtile, which executes shell commands or scripts.
 The stdout output will be displayed as text on the bar.
 
+The base idea of this widget was added to Qtile as [GenPollCommand](https://docs.qtile.org/en/latest/manual/ref/widgets.html#genpollcommand).
+
 ### Why this new widget?
 
 There is already a `widget.GenPollText` which can do the same things as this
