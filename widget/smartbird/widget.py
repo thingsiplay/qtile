@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Tuncay D.
+# Copyright (c) 2022, 2023 Tuncay D.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -109,6 +109,7 @@ class SmartBird(base.ThreadPoolText):
         """ Update only if new or last focused window matches. """
 
         if (self.window_name in client.name
-                or self.window_name in self.last_client.name):
+                or (self.last_client
+                    and self.window_name in self.last_client.name)):
             self.cmd_force_update()
         self.last_client = client
