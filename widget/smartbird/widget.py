@@ -108,8 +108,14 @@ class SmartBird(base.ThreadPoolText):
     def win_focus(self, client):
         """ Update only if new or last focused window matches. """
 
-        if (self.window_name in client.name
-                or (self.last_client
-                    and self.window_name in self.last_client.name)):
-            self.cmd_force_update()
+        force_update = False
+        try:
+            if (self.window_name in client.name
+                    or self.window_name in self.last_client.name):
+                force_update = True
+        except (TypeError, AttributeError):
+            pass
+        else:
+            if force_update:
+                self.cmd_force_update()
         self.last_client = client
